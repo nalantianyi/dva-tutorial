@@ -9,7 +9,6 @@ import UserSearch from '../components/Users/UserSearch';
 
 //引入样式
 import styles from '../Users.less';
-console.log(styles);
 
 
 function Users() {
