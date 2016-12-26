@@ -4,7 +4,7 @@ import Users from './routes/Users';
 export default function ({history}) {
     return (
         <Router history={history}>
-            <Route path="/users" componnent={Users}/>
+            <Route path="/users" component={Users}/>
         </Router>
     );
 
