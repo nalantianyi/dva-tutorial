@@ -1,12 +1,12 @@
 import React from 'react';
 import {Router, Route} from 'dva/router';
-
-function RouterConfig({history}) {
+import Users from './routes/Users';
+export default function ({history}) {
     return (
         <Router history={history}>
-            <Route path="/users" component={Users}/>
+            <Route path="/users" componnent={Users}/>
         </Router>
     );
-}
 
-export default RouterConfig;
+};
+
