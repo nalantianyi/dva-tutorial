@@ -1,6 +1,6 @@
 {
   "entry": "src/index.js",
-  "disableCSSModules": false,
+  "disableCSSModules": true,
   "less": false,
   "publicPath": "/",
   "autoprefixer": null,
