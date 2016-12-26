@@ -2,6 +2,8 @@
  * Created by nalantianyi on 2016/12/22.
  */
 import React, {Component, PropTypes} from 'react';
+// 引入 connect 工具函数
+import {connect} from 'dva';
 
 import UserList from '../components/Users/UserList';
 import UserModal from '../components/Users/UserModal';
@@ -11,16 +13,16 @@ import UserSearch from '../components/Users/UserSearch';
 import styles from '../Users.less';
 
 
-function Users() {
+function Users({location, dispatch, users}) {
+    const {loading, dataSource, total, current, currentItem, modalVisible, modalType}=users;
+
+
     const userSearchProps = {};
     const userListProps = {
-        total: 3,
-        current: 1,
-        loading: false,
-        dataSource: [
-            {name: '张三', age: 23, address: '南京'},
-            {name: '李四', age: 24, address: '杭州'},
-            {name: '小鸡', age: 27, address: '南京'}]
+        total,
+        current,
+        loading,
+        dataSource: dataSource
     };
     const userModalProps = {};
     return (
@@ -31,5 +33,9 @@ function Users() {
         </div>
     );
 }
-Users.propTypes = {};
-export  default  Users;
+Users.propTypes = {users: PropTypes.object};
+//指定订阅数据,这里关联了users
+function mapStateToProps({users}) {
+    return {users};
+}
+export  default  connect(mapStateToProps)(Users);
