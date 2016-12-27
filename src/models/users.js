@@ -1,6 +1,8 @@
 /**
  * Created by nalantianyi on 2016/12/22.
  */
+import { query } from '../services/users';
+
 export default {
     namespace: 'users',
     state: {
@@ -13,7 +15,19 @@ export default {
         modalType: 'create'
     },
     effects: {
-        *query(){
+        *query({payload}, {select, call, put}){
+            yield put({type: 'showLoading'});
+            const {data}=yield call(query);
+            if (data) {
+                yield put({
+                    type: 'querySuccess',
+                    payload: {
+                        list: data.data,
+                        total: data.page.total,
+                        current: data.page.current
+                    }
+                });
+            }
         },
         *create(){
         },
